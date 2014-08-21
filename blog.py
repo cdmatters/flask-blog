@@ -41,7 +41,11 @@ def login():
 #method: url_for returns url for function.    url_for('login')    >>>   /
 #method: auto_render('login.html')  renders "template.html" in 'templates' dir first
 
-
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    flash('You were logged out')
+    return redirect(url_for('login'))    
 
 @app.route('/main')
 def main():
